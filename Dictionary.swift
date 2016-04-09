@@ -10,9 +10,16 @@ import Foundation
 
 class Dictionary{
     init(){
-        let location = NSString(string:"/Users/madison/Desktop/CS/iOS/Dictionary/Dictionary.txt ").stringByExpandingTildeInPath
-        let fileContent = try? NSString(contentsOfFile: location, encoding: NSUTF8StringEncoding)
-        print(fileContent)
+        if let filepath = NSBundle.mainBundle().pathForResource("Dictionary", ofType: "txt") {
+            do {
+                let contents = try NSString(contentsOfFile: filepath, usedEncoding: nil) as String
+            } catch {
+                print("Context cannot be loaded")
+            }
+        } else {
+            print("Dictionary.txt cannot be found")
+        }
     }
+    
     
 }

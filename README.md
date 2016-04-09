@@ -1,2 +1,1 @@
-# Dictionary
-# Dictionary
+# A basic dictionary that can do auto searching
