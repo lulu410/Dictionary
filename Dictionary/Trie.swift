@@ -9,29 +9,45 @@
 import Foundation
 
 public class Trie{
-    var key: Char
+    var key: Character
     var kids: [Trie]
     let capacity: Int
     var isEnd: Bool
     
     init(){
+        self.key = "a"
+        self.isEnd = true
         self.capacity = 10
+        self.kids = Array<Trie>()
     }
     
     func add(word: String){
         if word.characters.count < 0{
             return;
         }
-        if var remain: String = search(word){
-            
+        
+        if search(word) == nil{
+            return;
+        }
+        var kidInUse: Trie!
+        for kid in kids{
+            if kid.key == word.sub(0){
+               kidInUse = kid
+            }
+        }
+        //add a new trie
+        if kidInUse == nil{
+            kidInUse.key = word.sub(0)
+            kidInUse.isEnd = word.characters.count == 1 ? true: false
+            kidInUse.add(word.sub(1...(word.characters.count - 1)))
         }
         
         
     }
     
-    func search(word: String)->String{
-        var curStr: String = word
-        var curChar: Character = curStr.sub(0)
+    func search(word: String)->String?{
+        let curStr: String = word
+        let curChar: Character = curStr.sub(0)
         if key != curChar{
             return word;
         }
@@ -41,6 +57,9 @@ public class Trie{
         return nil;
     }
     
+    func endTrue() -> Bool?{
+        return self.isEnd
+    }
     
 }
 
