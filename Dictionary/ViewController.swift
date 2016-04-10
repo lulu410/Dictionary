@@ -21,11 +21,12 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBOutlet weak var result: UITextView!
     @IBOutlet weak var search: UITextView!
-    
-    
+
     @IBAction func getVal(sender: UIButton) {
         var text = search.text!
+        //use dfs to auto correcting
   //      print(text)
         
     }

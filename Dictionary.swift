@@ -9,6 +9,9 @@
 import Foundation
 
 class Dictionary{
+
+    var dictionary = Trie()
+    
     init(){
         if let filepath = NSBundle.mainBundle().pathForResource("Dictionary", ofType: "txt") {
             do {
@@ -16,6 +19,7 @@ class Dictionary{
                 let words: [String] = contents.componentsSeparatedByString("\n")
                 for word in words{
                     print(word)
+                    dictionary.add(word)
                 }
             } catch {
                 print("Context cannot be loaded")
