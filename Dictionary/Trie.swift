@@ -4,67 +4,126 @@
 //
 //  Created by Madison on 4/9/16.
 //  Copyright © 2016 Madison. All rights reserved.
-// Reference: http://waynewbishop.com/swift/tries/
-
+//  Reference
 import Foundation
 
 public class Trie{
     var key: Character
     var kids: [Trie]
-    let capacity: Int
+ //   let capacity: Int
     var isEnd: Bool
+    var word: String
     
     init(){
-        self.key = "a"
-        self.isEnd = true
-        self.capacity = 10
+        self.key = "_"
+        self.isEnd = false
+ //       self.capacity = 10
         self.kids = Array<Trie>()
+        self.word = ""
     }
     
     func add(word: String){
-        if word.characters.count < 0{
+ //       var current: Trie = self
+        if word.characters.count == 0{
             return;
         }
         
-        if search(word) == nil{
+        if search(word) == "Found"{
             return;
         }
+        
         var kidInUse: Trie!
         for kid in kids{
             if kid.key == word.sub(0){
-               kidInUse = kid
+                kidInUse = kid
+       //         current = kidInUse
             }
         }
         //add a new trie
-        if kidInUse == nil{
+        if kidInUse == nil && word.characters.count > 0{
+          //  print(word)
+            kidInUse = Trie()
             kidInUse.key = word.sub(0)
-            kidInUse.isEnd = word.characters.count == 1 ? true: false
-            kidInUse.add(word.sub(1...(word.characters.count - 1)))
+            if(word.characters.count == 1){
+                kidInUse.isEnd = true
+            }
+            if !kidInUse.isEnd{
+                kidInUse.add(word.sub(1...(word.characters.count - 1)))
+            }
+            
+            kidInUse.word = self.word + String(kidInUse.key)
         }
-        
-        
+        kids.append(kidInUse)
+        print("Finish adding hahaha\r\r\r\r\r")
     }
-    
     func search(word: String)->String?{
-        let curStr: String = word
-        let curChar: Character = curStr.sub(0)
-        if key != curChar{
-            return word;
+        var remain: String = word
+        if(key == "_"){
+            print(word)
+            for kid in kids{
+                if kid.key != word.sub(0){
+                    continue
+                }
+                else{
+                    remain = kid.search(word)!
+                    if remain != "Found"{
+                        return remain
+                    }else{
+                        return "Found"
+                    }
+                }
+                
+            }
         }
         else{
-            search(word.sub(1...(word.characters.count-1)))
+            print(word)
+            if(word.characters.count == 0){
+                return "Found"
+            }
+            let curChar: Character = word.sub(0)
+            
+            
+            if key != curChar{
+                return word
+            }else{
+                if(word.characters.count == 1){
+                    return "Found"
+                }
+                if kids.count == 0{
+                    return word.sub(1...(word.characters.count - 1))
+                }
+                for kid in kids{
+                    remain = kid.search(word.sub(1...(word.characters.count-1)))!
+                    if kid.key != word.sub(1){
+                        continue
+                    }
+                    else{
+                        if remain != "Found"{
+                            return remain
+                        }else{
+                            return "Found"
+                        }
+                    }
+                    
+                }
+            }
         }
-        return nil;
+        return remain
     }
-    
+
     func endTrue() -> Bool?{
         return self.isEnd
+    }
+    
+    func toString()-> String{
+        return self.word
     }
     
 }
 
 extension String{
     func sub(i: Int) -> Character{
+      //  print(self)
         return self[self.startIndex.advancedBy(i)]
     }
     

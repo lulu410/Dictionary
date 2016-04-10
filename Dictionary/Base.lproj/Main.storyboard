@@ -18,12 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VUy-Dc-Hjw">
-                                <rect key="frame" x="20" y="97" width="560" height="483"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jzc-3d-kaf">
                                 <rect key="frame" x="550" y="28" width="30" height="30"/>
                                 <state key="normal" title="✔️">
@@ -39,21 +33,27 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fjB-oV-1qu">
+                                <rect key="frame" x="20" y="114" width="560" height="466"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="Jzc-3d-kaf" secondAttribute="trailing" id="7My-MX-pXA"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="vOE-Wr-2UL" secondAttribute="bottom" constant="540" id="CfF-t5-xWL"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="VUy-Dc-Hjw" secondAttribute="trailing" id="Cpx-1b-9Kd"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="VUy-Dc-Hjw" secondAttribute="bottom" constant="20" id="Mfe-BL-xHo"/>
                             <constraint firstItem="Jzc-3d-kaf" firstAttribute="leading" secondItem="vOE-Wr-2UL" secondAttribute="trailing" constant="1" id="Mg6-pV-UeH"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="fjB-oV-1qu" secondAttribute="leading" id="ZTK-NX-yP3"/>
                             <constraint firstItem="vOE-Wr-2UL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="fQO-t9-ke9"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Jzc-3d-kaf" secondAttribute="bottom" constant="542" id="kMD-me-Jad"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="fjB-oV-1qu" secondAttribute="bottom" constant="20" id="kPb-jl-qUp"/>
                             <constraint firstItem="vOE-Wr-2UL" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="khR-Uz-MLY"/>
-                            <constraint firstItem="VUy-Dc-Hjw" firstAttribute="top" secondItem="vOE-Wr-2UL" secondAttribute="bottom" constant="37" id="nds-TR-EF5"/>
+                            <constraint firstItem="fjB-oV-1qu" firstAttribute="top" secondItem="vOE-Wr-2UL" secondAttribute="bottom" constant="54" id="mCP-kI-zG3"/>
                             <constraint firstItem="Jzc-3d-kaf" firstAttribute="top" secondItem="vOE-Wr-2UL" secondAttribute="top" id="ohM-ax-4bO"/>
                             <constraint firstAttribute="leadingMargin" secondItem="vOE-Wr-2UL" secondAttribute="leading" id="rfI-Vw-taD"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="VUy-Dc-Hjw" secondAttribute="leading" id="ywL-Vr-dAf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fjB-oV-1qu" secondAttribute="trailing" id="wI4-Ag-gFv"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -62,8 +62,8 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="Result" destination="fjB-oV-1qu" id="XeT-Dh-TOR"/>
                         <outlet property="Search" destination="vOE-Wr-2UL" id="iDl-8s-4e3"/>
-                        <outlet property="result" destination="VUy-Dc-Hjw" id="d4F-rs-FWQ"/>
                         <outlet property="search" destination="vOE-Wr-2UL" id="o8E-az-bDE"/>
                     </connections>
                 </viewController>
