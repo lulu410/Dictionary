@@ -29,7 +29,7 @@ class Dictionary{
 //            print("Dictionary.txt cannot be found")
 //        }
         dictionary.add("cat")
-    //    dictionary.add("cet")
+        dictionary.add("cet")
         print(dictionary.search("caw"))
         print(dictionary.search("cat"))
         print(dictionary.search("cate"))
