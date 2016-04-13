@@ -28,14 +28,14 @@ public class Trie{
             return
         }
         
-        if search(word) == "Found"{
-            return
-        }
+//        if search(word) == "Found"{
+//            return
+//        }
         
         var kidInUse: Trie!
         var isAdded: Bool = false
         if(key == "_"){
-            print(word)
+         //   print(word)
             for kid in kids{
                 if kid.key == word.sub(0){
                     kid.add(word)
@@ -47,17 +47,19 @@ public class Trie{
                 kidInUse.key = word.sub(0)
                 if(word.characters.count == 1){
                     kidInUse.isEnd = true
+                    kidInUse.word = word
+                    return
                 }
-                if !kidInUse.isEnd{
-                    kidInUse.add(word.sub(1...(word.characters.count - 1)))
-                }
-                
-                kidInUse.word = self.word + String(kidInUse.key)
+                kidInUse.key = word.sub(0)
+                kidInUse.word = String(kidInUse.key)
+                kidInUse.add(word.sub(0...(word.characters.count - 1)))
+                print(kidInUse.word)
             }
             
         }
         else{
             if(word.characters.count == 0){
+                self.isEnd = true
                 return
             }
             for kid in kids{
@@ -70,27 +72,32 @@ public class Trie{
             //add a new trie
             if kidInUse == nil && word.characters.count > 0{
                 //  print(word)
-                kidInUse = Trie()
-                kidInUse.key = word.sub(0)
+                
+                print(word)
                 if(word.characters.count == 1){
-                    kidInUse.isEnd = true
+                    self.isEnd = true
+                    self.key = word.sub(0)
+                }else{
+                    if !self.isEnd{
+                        kidInUse = Trie()
+                        kidInUse.key = word.sub(1)
+                        
+                        kidInUse.word = String(self.word) + String(kidInUse.key)
+                        print(kidInUse.word)
+                        kidInUse.add(word.sub(1...(word.characters.count - 1)))
+                    }
                 }
-                if !kidInUse.isEnd{
-                    kidInUse.add(word.sub(1...(word.characters.count - 1)))
-                }
-            
-                kidInUse.word = self.word + String(kidInUse.key)
             }
         }
         if kidInUse != nil{
             kids.append(kidInUse)
-            print("Finish adding hahaha\r\r\r\r\r")
+         //   print("Finish adding hahaha\r\r\r\r\r")
         }
     }
     func search(word: String)->String?{
         var remain: String = word
         if(key == "_"){
-            print(word)
+          //  print(word)
             for kid in kids{
                 if kid.key != word.sub(0){
                     continue
@@ -107,7 +114,7 @@ public class Trie{
             }
         }
         else{
-            print(word)
+         //   print(word)
             if(word.characters.count == 0){
                 return "Found"
             }
@@ -152,7 +159,7 @@ public class Trie{
     
 }
 
-extension String{
+public extension String{
     func sub(i: Int) -> Character{
       //  print(self)
         return self[self.startIndex.advancedBy(i)]
