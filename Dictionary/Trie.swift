@@ -24,6 +24,7 @@ public class Trie{
     
     func add(word: String){
  //       var current: Trie = self
+        var isAdded: Bool = false
         if word.characters.count == 0{
             return
         }
@@ -33,7 +34,6 @@ public class Trie{
 //        }
         
         var kidInUse: Trie!
-        var isAdded: Bool = false
         if(key == "_"){
          //   print(word)
             for kid in kids{
@@ -53,7 +53,7 @@ public class Trie{
                 kidInUse.key = word.sub(0)
                 kidInUse.word = String(kidInUse.key)
                 kidInUse.add(word.sub(0...(word.characters.count - 1)))
-                print(kidInUse.word)
+                kids.append(kidInUse)
             }
             
         }
@@ -73,7 +73,7 @@ public class Trie{
             if kidInUse == nil && word.characters.count > 0{
                 //  print(word)
                 
-                print(word)
+             //   print(word)
                 if(word.characters.count == 1){
                     self.isEnd = true
                     self.key = word.sub(0)
@@ -83,14 +83,15 @@ public class Trie{
                         kidInUse.key = word.sub(1)
                         
                         kidInUse.word = String(self.word) + String(kidInUse.key)
-                        print(kidInUse.word)
+                    //    print(kidInUse.word)
                         kidInUse.add(word.sub(1...(word.characters.count - 1)))
+                        kids.append(kidInUse)
                     }
                 }
             }
         }
         if kidInUse != nil{
-            kids.append(kidInUse)
+            
          //   print("Finish adding hahaha\r\r\r\r\r")
         }
     }
@@ -115,7 +116,7 @@ public class Trie{
         }
         else{
          //   print(word)
-            if(word.characters.count == 0){
+            if(word.characters.count == 0 && self.isEnd == true){
                 return "Found"
             }
             let curChar: Character = word.sub(0)
@@ -148,7 +149,64 @@ public class Trie{
         }
         return remain
     }
+    
+    func bfs(context: String) -> Trie{
+        var remain = self
+        var isFound: Bool = false
+        if(key == "_"){
+            //  print(word)
+            for kid in kids{
+                if kid.key != context.sub(0){
+                    continue
+                }
+                else{
+                    isFound = true
+                    bfs(context)
+                }
+                
+            }
+        }
+        else{
+            //   print(word)
+            
+            if(context.characters.count == 1){
+                return self
+            }
+            if kids.count == 0{
+                return Trie()
+                
+            }
+            for kid in kids{
+                if kid.key != word.sub(1){
+                    continue
+                }
+                else{
+                    remain = kid.bfs(context.sub(1...(word.characters.count-1)))
+                }
+                
+            }
+            
+        }
+        if(isFound == false){
+            return self
+        }
+        return remain
+    }
 
+    func turnToString(auto: Trie, var result: [String]){
+        if auto.key == "_"{
+            turnToString(auto, result: ["The word you are searching is not found"])
+        }else{
+            if auto.isEnd == true{
+                result.append(auto.word)
+            }else{
+                for kid in auto.kids{
+                    turnToString(kid, result: result)
+                }
+            }
+        }
+    }
+    
     func endTrue() -> Bool?{
         return self.isEnd
     }

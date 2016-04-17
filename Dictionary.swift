@@ -18,8 +18,8 @@ class Dictionary{
                 let contents = try NSString(contentsOfFile: filepath, usedEncoding: nil) as String
                 let words: [String] = contents.componentsSeparatedByString("\r")
                 for word in words{
-                    print(word)
-                    if !(word.sub(0) == "#") && !(word == "") {
+                    if !(word == "") && !(word.sub(0) == "#"){
+                        print(word)
                         dictionary.add(word)
                     }
                 }
