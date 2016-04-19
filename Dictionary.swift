@@ -24,6 +24,9 @@ class Dictionary{
                     }
                 }
                 print(dictionary.search("abandon"))
+                var result:[String] = [String]()
+                print(dictionary.bfs("aban").toString())
+                print(result)
                 
             } catch {
                 print("Context cannot be loaded")

@@ -161,14 +161,14 @@ public class Trie{
                 }
                 else{
                     isFound = true
-                    bfs(context)
+                    remain = kid.bfs(context)
                 }
                 
             }
         }
         else{
             //   print(word)
-            
+            isFound = true
             if(context.characters.count == 1){
                 return self
             }
@@ -177,11 +177,11 @@ public class Trie{
                 
             }
             for kid in kids{
-                if kid.key != word.sub(1){
+                if kid.key != context.sub(1){
                     continue
                 }
                 else{
-                    remain = kid.bfs(context.sub(1...(word.characters.count-1)))
+                    remain = kid.bfs(context.sub(1...(context.characters.count-1)))
                 }
                 
             }
@@ -211,13 +211,29 @@ public class Trie{
         return self.isEnd
     }
     
-    func toString()-> String{
-        return self.word
+    func toString() -> [String]{
+        var result: [String] = [String]()
+        if self.isEnd{
+            result.append(self.word)
+        }
+        for kid in kids{
+            if kid.isEnd{
+                result.append(kid.word)
+            }
+            else{
+                let temp = kid.toString()
+                for string in temp{
+                    result.append(string)
+                }
+            }
+        }
+        return result
     }
+    
     
 }
 
-public extension String{
+extension String{
     func sub(i: Int) -> Character{
       //  print(self)
         return self[self.startIndex.advancedBy(i)]
