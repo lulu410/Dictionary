@@ -20,16 +20,22 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    @IBOutlet weak var Result: UILabel!
+    @IBOutlet weak var result: UILabel!
     @IBOutlet weak var search: UITextView!
 
     @IBAction func getVal(sender: UIButton) {
-        var text = search.text!
-        //use dfs to auto correcting
-        print(text)
-        
+        let text = search.text!
+        let display: [String] = dictionary.autoCorrec(text)
+        var cao: String = ""
+        for word in display{
+          
+            cao = cao + "\r" + word
+         
+            
+        }
+        result.text = "\(cao)"
+        print(result.text)
     }
-    
     
  
 }

@@ -213,6 +213,9 @@ public class Trie{
     
     func toString() -> [String]{
         var result: [String] = [String]()
+        if key == "_"{
+            return ["The word you are searching is not found"]
+        }
         if self.isEnd{
             result.append(self.word)
         }

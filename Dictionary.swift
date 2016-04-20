@@ -19,14 +19,14 @@ class Dictionary{
                 let words: [String] = contents.componentsSeparatedByString("\r")
                 for word in words{
                     if !(word == "") && !(word.sub(0) == "#"){
-                        print(word)
+                       // print(word)
                         dictionary.add(word)
                     }
                 }
-                print(dictionary.search("abandon"))
-                var result:[String] = [String]()
-                print(dictionary.bfs("aban").toString())
-                print(result)
+             //   print(dictionary.search("abandon"))
+              //  var result:[String] = [String]()
+             //   print(dictionary.bfs("str").toString())
+             //   print(result)
                 
             } catch {
                 print("Context cannot be loaded")
@@ -34,6 +34,10 @@ class Dictionary{
         } else {
             print("Dictionary.txt cannot be found")
         }
+    }
+    
+    func autoCorrec(con: String)->[String]{
+        return dictionary.bfs(con).toString()
     }
     
     
