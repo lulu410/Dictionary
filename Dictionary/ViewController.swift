@@ -29,11 +29,12 @@ class ViewController: UIViewController {
         var cao: String = ""
         for word in display{
           
-            cao = cao + "\r" + word
+            cao = cao + "\n " + word
          
             
         }
-        result.text = "\(cao)"
+        let nima = cao
+        result.text = nima
         print(result.text)
     }
     
