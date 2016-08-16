@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -20,6 +20,7 @@
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vOE-Wr-2UL">
                                 <rect key="frame" x="20" y="28" width="513" height="20"/>
+                                <color key="backgroundColor" red="0.45171949662247063" green="0.47357657068062831" blue="0.015814491385101246" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="v13-k3-tjM"/>
                                 </constraints>
@@ -33,7 +34,8 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
+                                <color key="highlightedColor" red="0.69995158910751343" green="0.12262696772813797" blue="0.94310778379440308" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="shadowColor" red="0.16695263981819153" green="0.091166339814662933" blue="0.94949990510940552" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="Yc7-eP-SoN"/>
@@ -49,19 +51,28 @@
                                     <action selector="getVal:" destination="BYZ-38-t0r" eventType="touchUpInside" id="T8B-WX-fcP"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Type in content you want to search" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="7QV-zq-HUH">
+                                <rect key="frame" x="20" y="6" width="268" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" red="0.78094322643979064" green="0.78094322643979064" blue="0.78094322643979064" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.78389071707184099" green="0.047309400716701533" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.82375977644844012" green="0.98960280418395996" blue="0.94664663470836163" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="fjB-oV-1qu" firstAttribute="top" secondItem="Jzc-3d-kaf" secondAttribute="bottom" constant="-3" id="0hd-l9-Fre"/>
                             <constraint firstItem="fjB-oV-1qu" firstAttribute="top" secondItem="vOE-Wr-2UL" secondAttribute="bottom" constant="1" id="1tl-x6-fy0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Jzc-3d-kaf" secondAttribute="trailing" id="6pv-56-8Bm"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Jzc-3d-kaf" secondAttribute="trailing" id="7My-MX-pXA"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vOE-Wr-2UL" secondAttribute="trailing" constant="47" id="7zu-Ea-zv4"/>
+                            <constraint firstItem="7QV-zq-HUH" firstAttribute="leading" secondItem="vOE-Wr-2UL" secondAttribute="leading" id="9JV-MN-6ds"/>
                             <constraint firstItem="vOE-Wr-2UL" firstAttribute="leading" secondItem="fjB-oV-1qu" secondAttribute="leading" id="Azn-m4-UPE"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="vOE-Wr-2UL" secondAttribute="bottom" priority="900" constant="540" id="CfF-t5-xWL"/>
                             <constraint firstAttribute="leadingMargin" secondItem="fjB-oV-1qu" secondAttribute="leading" id="Ctb-vY-bKR"/>
                             <constraint firstAttribute="leadingMargin" secondItem="vOE-Wr-2UL" secondAttribute="leading" id="LRU-Vc-Vtg"/>
                             <constraint firstItem="Jzc-3d-kaf" firstAttribute="leading" secondItem="vOE-Wr-2UL" secondAttribute="trailing" constant="1" id="Mg6-pV-UeH"/>
+                            <constraint firstItem="vOE-Wr-2UL" firstAttribute="top" secondItem="7QV-zq-HUH" secondAttribute="bottom" constant="1" id="R3P-gS-lrb"/>
                             <constraint firstItem="vOE-Wr-2UL" firstAttribute="leading" secondItem="fjB-oV-1qu" secondAttribute="leading" id="Th4-2o-qg0"/>
                             <constraint firstAttribute="leadingMargin" secondItem="fjB-oV-1qu" secondAttribute="leading" id="cog-pH-iff"/>
                             <constraint firstItem="Jzc-3d-kaf" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="5" id="cx3-8g-oMR"/>
@@ -97,6 +108,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="result" destination="fjB-oV-1qu" id="vAQ-pp-jEp"/>
                         <outlet property="search" destination="vOE-Wr-2UL" id="o8E-az-bDE"/>
@@ -104,7 +116,8 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="258" y="373"/>
+            <point key="canvasLocation" x="270" y="332"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="0.66155961046668255" green="0.63591441791843162" blue="0.6575349906132274" alpha="1" colorSpace="calibratedRGB"/>
 </document>

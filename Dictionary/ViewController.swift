@@ -26,14 +26,14 @@ class ViewController: UIViewController {
     @IBAction func getVal(sender: UIButton) {
         let text = search.text!
         let display: [String] = dictionary.autoCorrec(text)
-        var cao: String = ""
+        var c: String = ""
         for word in display{
           
-            cao = cao + "\n " + word
+            c = c + "\n " + word
          
             
         }
-        let nima = cao
+        let nima = c
         result.text = nima
         print(result.text)
     }

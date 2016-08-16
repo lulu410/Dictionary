@@ -37,7 +37,7 @@ class Dictionary{
     }
     
     func autoCorrec(con: String)->[String]{
-        return dictionary.bfs(con).toString()
+        return dictionary.bfs(con.lowercaseString).toString()
     }
     
     
